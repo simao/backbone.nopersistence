@@ -32,13 +32,17 @@
 
      // Each collection must assign a new bnp.Nopersistence instance
      // to a field named noPersistence
-     bnp.NoPersistence = function() {
+     bnp.NoPersistence = function(maxSize) {
 	 this.id = guid();
 	 this.data = {};
+         this.maxSize = maxSize;
      };
 
      _.extend(bnp.NoPersistence.prototype, {
 		  create : function (model) {
+                      if(!_.isUndefined(this.maxSize) && _.size(this.data) > this.maxSize) {
+                          throw "Max collection size exceeded";
+                      }
 		      if (!model.id) model.id = model.attributes.id = guid();
 		      this.data[model.id] = _.extend({}, model);
 		      return model;
@@ -61,7 +65,6 @@
 		      delete this.data[model.id];
 		      return model;
 		  }
-
 	      });
      
 
@@ -88,11 +91,9 @@
 	 }
 
 	 if (resp) {
-
 	     options.success(resp);
 	 } else {
 	     options.error("Record not found");
 	 }
      };
-     
  })();
