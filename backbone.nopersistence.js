@@ -32,9 +32,6 @@
 	return (s4()+s4()+"-"+s4()+"-"+s4()+"-"+s4()+"-"+s4()+s4()+s4());
     };
 
-    // This object holds one bnp.NoPersistence for each collection
-    var index = {};
-
     // Each collection must assign a new bnp.Nopersistence instance
     // to a field named noPersistence
     bnp.NoPersistence = function(maxSize) {

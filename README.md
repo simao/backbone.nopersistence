@@ -25,6 +25,16 @@ Create your collections with a new `bnp.NoPersistence` assigned to
       
       // Standard Backbone.js code
     });
+
+You can also set a `maxSize` property in each `bnp.NoPersistence` instance. When
+this property is set and a new model is inserted in a collection,
+`backbone.persisistence` will throw an exception if the new size of the
+collection is greater than `maxSize`.
+
+Alternatively, you can let `backbone.nopersistence` handle the instantiation of
+these objects for you. Just import the `.js` files and use your models
+normally.
+
   
 # Credits
 
