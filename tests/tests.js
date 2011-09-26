@@ -3,9 +3,7 @@ $(function () {
 
     module('backbone.nopersistence', {
         setup : function () {
-            ItemsCollection = Backbone.Collection.extend({
-                noPersistence : new bnp.NoPersistence()
-            });
+            ItemsCollection = Backbone.Collection.extend({    });
         }
     });
 
